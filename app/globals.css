@@ -1,26 +1,138 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+
+  --animate-glow-pulse: glowPulse 2.4s ease-in-out infinite;
+  --animate-vertical-marquee: verticalMarquee 18s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility animation-reverse {
+  animation-direction: reverse;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0a0a0a;
+  color: #e6e6e6;
+}
+
+.docs {
+  color: #c8cad4;
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.docs h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.docs h2 {
+  color: #ffffff;
+  font-size: 1.6rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.docs h3 {
+  color: #e6e6e6;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.docs p {
+  margin: 0.75rem 0;
+  color: #b3b6c2;
+}
+
+.docs a {
+  color: #8ab4ff;
+  text-decoration: none;
+}
+
+.docs a:hover {
+  color: #a9c7ff;
+}
+
+.docs ul {
+  padding-left: 1.25rem;
+}
+
+.docs li {
+  margin: 0.35rem 0;
+}
+
+.docs code {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  color: #e2e8f0;
+}
+
+.docs pre {
+  background: #0f1117;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  overflow: auto;
+}
+
+.docs pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #e6edf3;
+  font-size: 0.9rem;
+}
+
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@utility code-block {
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+
+
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 12px rgba(21, 93, 252, 0.45), 0 0 24px rgba(21, 93, 252, 0.25);
+    border-color: rgba(191, 219, 254, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 18px rgba(121, 21, 252, 0.75), 0 0 36px rgba(83, 21, 252, 0.35);
+    border-color: rgba(191, 219, 254, 0.65);
+  }
+}
+
+@keyframes verticalMarquee {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
 }
