@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 const sections = [
     { id: "get-started", label: "Get started" },
     { id: "discord-setup", label: "Discord setup" },
@@ -5,6 +7,32 @@ const sections = [
     { id: "theming", label: "Theming" },
     { id: "notes", label: "Notes" },
 ];
+
+export const metadata: Metadata = {
+    title: "Docs",
+    description:
+        "Formcord documentation: quick start, helpers, theming, and usage patterns.",
+    openGraph: {
+        title: "Formcord Docs",
+        description:
+            "Quick start, helpers, theming, and usage patterns for Formcord.",
+        images: [
+            {
+                url: "https://rendercard.vercel.app/api/rendercard?title=Formcord+Docs&description=Quick+start%2C+helpers%2C+theming%2C+usage+patterns.&theme=glass&accent=%235865F2&site=formcord.vercel.app/docs",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Formcord Docs",
+        description:
+            "Quick start, helpers, theming, and usage patterns for Formcord.",
+        images: [
+            "https://rendercard.vercel.app/api/rendercard?title=Formcord+Docs&description=Quick+start%2C+helpers%2C+theming%2C+usage+patterns.&theme=glass&accent=%235865F2&site=formcord.vercel.app/docs",
+        ],
+    },
+};
+
 
 export default function DocsPage() {
     return (

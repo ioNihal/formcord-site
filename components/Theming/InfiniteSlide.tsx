@@ -8,6 +8,14 @@ const codeSamples = [
     `await formcord.bug({\n  title: "Crash",\n  steps: "Click > Save"\n});`,
 ];
 
+const DISCORD_EXAMPLES = [
+    "bug",
+    "contact",
+    "deploy",
+    "error",
+    "feedback",
+]
+
 
 export default function InfiniteSlide() {
     return (
@@ -40,14 +48,14 @@ export default function InfiniteSlide() {
                 <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-8 bg-linear-to-t from-zinc-600/10 to-transparent z-10" />
 
                 <div className="flex flex-col gap-3 animate-vertical-marquee animation-reverse group-hover:[animation-play-state:paused] p-2">
-                    {Array.from({ length: 10 }).map((_, i) => (
+                    {DISCORD_EXAMPLES.map((i) => (
                         <div
-                            key={`img-${i}`}
+                            key={`${i}-example`}
                             className="relative overflow-hidden rounded-3xl ring-3 ring-white/10 bg-black/40 p-1"
                         >
                             <Image
-                                src="/discordThemeExample.webp"
-                                alt="discord-message-example"
+                                src={`/examplesMessages/${i}.webp`}
+                                alt={`${i}-example`}
                                 height={140}
                                 width={280}
                                 className="h-auto w-full rounded-[22px] object-contain"
