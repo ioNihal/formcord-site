@@ -48,14 +48,14 @@ export default function InfiniteSlide() {
                 <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-8 bg-linear-to-t from-zinc-600/10 to-transparent z-10" />
 
                 <div className="flex flex-col gap-3 animate-vertical-marquee animation-reverse group-hover:[animation-play-state:paused] p-2">
-                    {DISCORD_EXAMPLES.map((i) => (
+                    {[...DISCORD_EXAMPLES, ...DISCORD_EXAMPLES].map((i, index) => (
                         <div
-                            key={`${i}-example`}
+                            key={`${i}-example-${index}`}
                             className="relative overflow-hidden rounded-3xl ring-3 ring-white/10 bg-black/40 p-1"
                         >
                             <Image
                                 src={`/examplesMessages/${i}.webp`}
-                                alt={`${i}-example`}
+                                alt={`${i}-example-${index}`}
                                 height={140}
                                 width={280}
                                 className="h-auto w-full rounded-[22px] object-contain"
