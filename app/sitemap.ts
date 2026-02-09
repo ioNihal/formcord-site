@@ -6,10 +6,10 @@ const LAST_MODIFIED = "2026-02-09";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: `${BASE_URL}/`,
+      url: BASE_URL,
       lastModified: LAST_MODIFIED,
       changeFrequency: "weekly",
-      priority: 1.0,
+      priority: 1,
     },
     {
       url: `${BASE_URL}/docs`,
