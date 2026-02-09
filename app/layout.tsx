@@ -35,6 +35,9 @@ export const metadata: Metadata = {
     "npm",
     "formcord",
   ],
+  verification: {
+    google: "nJTi0WblYTwIGSD_CRF7Gzz5CI2BhPvHV0Uq6qSYoIw"
+  },
   openGraph: {
     title: "Formcord",
     description:
