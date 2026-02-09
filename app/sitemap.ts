@@ -1,18 +1,19 @@
 import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://formcord.vercel.app";
+const BASE_URL = "https://formcord.vercel.app";
+const LAST_MODIFIED = "2026-02-09";
 
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: `${base}/`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/`,
+      lastModified: LAST_MODIFIED,
       changeFrequency: "weekly",
-      priority: 1,
+      priority: 1.0,
     },
     {
-      url: `${base}/docs`,
-      lastModified: new Date(),
+      url: `${BASE_URL}/docs`,
+      lastModified: LAST_MODIFIED,
       changeFrequency: "weekly",
       priority: 0.8,
     },
