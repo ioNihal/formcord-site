@@ -26,7 +26,7 @@ export default function ButtonwithCopy() {
             text-sm sm:text-base lg:text-lg font-semibold text-zinc-100 backdrop-blur hover:border-blue-600/30 hover:bg-blue-600/10 disabled:opacity-70">
             <Terminal size={14} className="text-zinc-400" />
             npm i formcord
-            {copied ? <Check size={20} className="text-emerald-400" /> : <Copy size={20} className="text-zinc-500" />}
+            {copied ? <Check size={20} className="text-emerald-400" /> : <Copy size={20} className="text-gray-300" />}
         </button>
     )
 }

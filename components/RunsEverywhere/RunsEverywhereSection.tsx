@@ -12,7 +12,7 @@ export default function RunsEverywhereSection() {
     <section className="w-full px-6 py-20">
       <div className="flex flex-col items-center gap-4 mx-auto max-w-7xl">
         <h2 className="text-2xl lg:text-4xl font-semibold text-white">Runs everywhere</h2>
-        <p className="text-sm lg:text-base text-zinc-500">One codebase. Every runtime.</p>
+        <p className="text-sm lg:text-base text-gray-300">One codebase. Every runtime.</p>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-2 lg:gap-8 text-xs text-zinc-300">
           {runtimes.map((r) => (

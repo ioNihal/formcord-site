@@ -13,12 +13,12 @@ export default function Footer() {
           </Link>
 
           <div className="flex items-center gap-5">
-            <Link className="hover:text-white" href="#docs">
+            <Link className="hover:text-white" href="/docs">
               Docs
             </Link>
-            <Link className="hover:text-white" href="#changelog">
+            {/* <Link className="hover:text-white" href="#changelog">
               Changelog
-            </Link>
+            </Link> */}
             <Link
               className="hover:text-white"
               href="https://github.com/ioNihal/formcord"
@@ -27,15 +27,15 @@ export default function Footer() {
             >
               GitHub
             </Link>
-            <span className="text-zinc-500">MIT</span>
+            <span className="text-gray-300">MIT</span>
           </div>
         </div>
 
         <div className="mt-3 lg:mt-6 border-t border-white/5 pt-6 text-center">
-          <div className="text-zinc-500 text-xs sm:text-sm">
+          <div className="text-gray-300 text-xs sm:text-sm">
             Universal Discord notifications with zero dependencies.
           </div>
-          <div className="mt-2 text-xs text-zinc-500">
+          <div className="mt-2 text-xs text-gray-300">
             Developed by{" "}
             <Link
               href="https://ionihal.vercel.app"

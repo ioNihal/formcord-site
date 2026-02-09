@@ -38,7 +38,7 @@ export default function DocsPage() {
     return (
         <main className="mx-auto w-full max-w-6xl px-6 py-20 text-zinc-300">
             <header className="space-y-4">
-                <p className="text-xs uppercase tracking-widest text-zinc-500">Docs</p>
+                <p className="text-xs uppercase tracking-widest text-gray-300">Docs</p>
                 <h1 className="text-4xl font-semibold text-white md:text-5xl">Formcord</h1>
                 <p className="max-w-2xl text-base text-zinc-400">
                     Universal Discord notifications with zero dependencies. Works in Edge,
@@ -62,14 +62,14 @@ export default function DocsPage() {
                         <h2 className="text-2xl font-semibold text-white">Get started</h2>
 
                         <div className="space-y-2">
-                            <p className="text-xs uppercase tracking-widest text-zinc-500">Install</p>
+                            <p className="text-xs uppercase tracking-widest text-gray-300">Install</p>
                             <pre className="code-block rounded-xl p-4 text-xs text-zinc-200 overflow-x-auto max-w-full">
                                 <code>npm install formcord</code>
                             </pre>
                         </div>
 
                         <div className="space-y-2">
-                            <p className="text-xs uppercase tracking-widest text-zinc-500">
+                            <p className="text-xs uppercase tracking-widest text-gray-300">
                                 Environment variables
                             </p>
                             <pre className="code-block rounded-xl p-4 text-xs text-zinc-200 overflow-x-auto max-w-full">
@@ -81,7 +81,7 @@ FORMCORD_DISCORD_CHANNEL=yyyy`}
                         </div>
 
                         <div className="space-y-2">
-                            <p className="text-xs uppercase tracking-widest text-zinc-500">
+                            <p className="text-xs uppercase tracking-widest text-gray-300">
                                 First message
                             </p>
                             <pre className="code-block rounded-xl p-4 text-xs text-zinc-200 overflow-x-auto max-w-full">

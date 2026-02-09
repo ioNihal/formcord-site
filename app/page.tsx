@@ -22,7 +22,7 @@ export default function Home() {
         <div className="relative mx-auto w-full max-w-xl">
           <div className="relative overflow-hidden rounded-4xl ring-3 ring-white/10 bg-black/40 p-2 shadow-[0_30px_90px_rgba(0,0,0,0.6)]">
             <Image
-              src="/discordMessageExample.png"
+              src="/discordMessageExample.webp"
               alt="discord-message-example-image"
               height={1000}
               width={1200}
