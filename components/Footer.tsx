@@ -31,25 +31,38 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-3 lg:mt-6 border-t border-white/5 pt-6 text-center">
-          <div className="text-gray-300 text-xs sm:text-sm">
+        <div className="mt-3 lg:mt-6 border-t border-white/10 pt-6 text-center">
+          <div className="text-gray-200 text-xs sm:text-sm">
             Universal Discord notifications with zero dependencies.
           </div>
-          <div className="mt-2 text-xs text-gray-300">
+
+          <div className="mt-2 text-xs text-gray-200">
             Developed by{" "}
             <Link
               href="https://ionihal.vercel.app"
               target="_blank"
               rel="noreferrer"
-              className="text-blue-100 hover:text-blue-300"
+              className="
+        text-blue-400
+        underline
+        underline-offset-2
+        decoration-blue-400
+        hover:text-blue-300
+        hover:decoration-blue-300
+        focus:outline-none
+        focus-visible:ring-2
+        focus-visible:ring-blue-400
+      "
             >
               Nihal
             </Link>
           </div>
-          <div className="mt-2 text-[10px] text-blue-400">
+
+          <div className="mt-2 text-[10px] text-blue-300">
             This project is not affiliated with or endorsed by Discord.
           </div>
         </div>
+
       </div>
     </footer>
   );
