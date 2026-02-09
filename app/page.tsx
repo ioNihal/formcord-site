@@ -14,7 +14,7 @@ export default function Home() {
 
 
       <section className="mx-auto w-full max-w-7xl px-6 py-24">
-        <div className="mx-auto mb-6 flex max-w-xl items-center justify-between text-[10px] sm:text-xs lg:text-sm text-zinc-500">
+        <div className="mx-auto mb-6 flex max-w-xl items-center justify-between text-[10px] sm:text-xs lg:text-sm text-gray-300">
           <span className="uppercase tracking-widest">Discord Preview</span>
           <span>Real message payload</span>
         </div>
