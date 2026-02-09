@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function ButtonWithScroll() {
     function handleClick() {
-        const el = document.getElementById("examples");
+        const el = document.getElementById("docs");
         if (el) {
             el.scrollIntoView({ behavior: "smooth", block: "start" });
         }
