@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import CodeBlock from "@/components/Docs/CodeBlock";
+import Link from "next/link";
 
 const sections = [
     { id: "get-started", label: "Get started" },
@@ -40,7 +42,7 @@ export default function DocsPage() {
             <header className="space-y-4">
                 <p className="text-xs uppercase tracking-widest text-gray-300">Docs</p>
                 <h1 className="text-4xl font-semibold text-white md:text-5xl">Formcord</h1>
-                <p className="max-w-2xl text-base text-zinc-400">
+                <p className="max-w-2xl text-base text-zinc-300">
                     Universal Discord notifications with zero dependencies. Works in Edge,
                     serverless, and Node runtimes using only Web APIs.
                 </p>
@@ -48,7 +50,7 @@ export default function DocsPage() {
 
             <div className="mt-12 grid gap-12 lg:grid-cols-[220px_minmax(0,1fr)]">
                 <aside className="hidden lg:block">
-                    <div className="sticky top-24 space-y-3 text-sm text-zinc-400">
+                    <div className="sticky top-24 space-y-3 text-sm text-zinc-300">
                         {sections.map((s) => (
                             <a key={s.id} href={`#${s.id}`} className="block hover:text-white">
                                 {s.label}
@@ -61,31 +63,24 @@ export default function DocsPage() {
                     <section id="get-started" className="space-y-6">
                         <h2 className="text-2xl font-semibold text-white">Get started</h2>
 
-                        <div className="space-y-2">
+                        <div className="space-y-4">
                             <p className="text-xs uppercase tracking-widest text-gray-300">Install</p>
-                            <pre className="code-block rounded-xl p-4 text-xs text-zinc-200 overflow-x-auto max-w-full">
-                                <code>npm install formcord</code>
-                            </pre>
+                            <CodeBlock title="bash" code={`npm install formcord`} lang="bash" />
                         </div>
 
                         <div className="space-y-2">
                             <p className="text-xs uppercase tracking-widest text-gray-300">
                                 Environment variables
                             </p>
-                            <pre className="code-block rounded-xl p-4 text-xs text-zinc-200 overflow-x-auto max-w-full">
-                                <code>
-                                    {`FORMCORD_DISCORD_TOKEN=xxxx
-FORMCORD_DISCORD_CHANNEL=yyyy`}
-                                </code>
-                            </pre>
+                            <CodeBlock title="ENV" code={`FORMCORD_DISCORD_TOKEN=xxxx
+FORMCORD_DISCORD_CHANNEL=yyyy`} />
                         </div>
 
                         <div className="space-y-2">
                             <p className="text-xs uppercase tracking-widest text-gray-300">
                                 First message
                             </p>
-                            <pre className="code-block rounded-xl p-4 text-xs text-zinc-200 overflow-x-auto max-w-full">
-                                <code>{`import { formcord } from "formcord";
+                            <CodeBlock title="TS" code={`import { formcord } from "formcord";
 
 await formcord.contact({
   token: process.env.FORMCORD_DISCORD_TOKEN!,
@@ -93,15 +88,16 @@ await formcord.contact({
   subject: "Hello",
   email: "me@example.com",
   message: "This is a test",
-});`}</code>
-                            </pre>
+});`} lang="ts" />
                         </div>
                     </section>
 
                     <section id="discord-setup" className="space-y-4">
-                        <h2 className="text-2xl font-semibold text-white">Discord bot setup</h2>
-                        <ol className="list-decimal space-y-2 pl-5 text-sm text-zinc-400">
-                            <li>Create an app and bot in the Discord Developer Portal.</li>
+                        <h2 className="text-2xl font-semibold text-white">Discord bot setup <span className="text-zinc-300 text-sm font-light italic">(quick and easy)</span></h2>
+                        <ol className="list-decimal space-y-2 pl-5 text-sm text-zinc-300">
+                            <li>Create an app and bot in the <Link className="text-white hover:underline"
+                                href={"https://discord.com/developers/applications"}>
+                                Discord Developer Portal</Link>.</li>
                             <li>Copy the bot token.</li>
                             <li>Invite the bot to your server with permission to send messages.</li>
                             <li>Get the channel ID (enable Developer Mode, then copy ID).</li>
@@ -111,7 +107,7 @@ await formcord.contact({
                     <section id="helpers" className="space-y-8">
                         <div>
                             <h2 className="text-2xl font-semibold text-white">Helpers</h2>
-                            <p className="mt-1 text-sm text-zinc-400">
+                            <p className="mt-1 text-sm text-zinc-300">
                                 Five helpers for common notification patterns.
                             </p>
                         </div>
@@ -229,30 +225,27 @@ await formcord.contact({
                             },
                         ].map((h) => (
                             <div key={h.id} id={h.id} className="space-y-3 min-w-0">
-                                <h3 className="text-lg font-semibold text-white">{h.title}</h3>
-                                <p className="text-sm text-zinc-400">{h.desc}</p>
-                                <ul className="list-disc pl-5 text-xs text-zinc-400">
+                                <h3 className="text-xl font-semibold text-white">{h.title}</h3>
+                                <p className="text-sm text-zinc-300">{h.desc}</p>
+                                <ul className="list-disc pl-5 text-sm text-zinc-300">
                                     {h.params.map(([k, v]) => (
                                         <li key={k}>
                                             <span className="text-white">{k}</span> - {v}
                                         </li>
                                     ))}
                                 </ul>
-                                <pre className="code-block rounded-xl p-4 text-xs text-zinc-200 overflow-x-auto max-w-full">
-                                    <code>{h.code}</code>
-                                </pre>
+                                <CodeBlock title="TS" code={h.code} lang="ts" />
                             </div>
                         ))}
                     </section>
 
                     <section id="theming" className="space-y-4">
                         <h2 className="text-2xl font-semibold text-white">Theming and content</h2>
-                        <p className="text-sm text-zinc-400">
+                        <p className="text-sm text-zinc-300">
                             Add a top message with <code>content</code> and customize embeds with{" "}
                             <code>theme</code>.
                         </p>
-                        <pre className="code-block rounded-xl p-4 text-xs text-zinc-200 overflow-x-auto max-w-full">
-                            <code>{`formcord.contact({
+                        <CodeBlock title="TS" code={`formcord.contact({
   token,
   channelId,
   subject: "Hello",
@@ -266,13 +259,12 @@ await formcord.contact({
     footer: { text: "Email: me@example.com" },
     timestamp: new Date().toISOString(),
   },
-});`}</code>
-                        </pre>
+});`} lang="ts" />
                     </section>
 
                     <section id="notes" className="space-y-3">
                         <h2 className="text-2xl font-semibold text-white">Notes</h2>
-                        <ul className="list-disc space-y-1 pl-5 text-sm text-zinc-400">
+                        <ul className="list-disc space-y-1 pl-5 text-zinc-300">
                             <li>Uses only <code>fetch</code>, <code>URL</code>, and JSON.</li>
                             <li>Retries once on 429 rate limits.</li>
                             <li>Best effort delivery.</li>

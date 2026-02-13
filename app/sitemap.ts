@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://formcord.vercel.app";
-const LAST_MODIFIED = "2026-02-09";
+const LAST_MODIFIED = "2026-02-13";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
