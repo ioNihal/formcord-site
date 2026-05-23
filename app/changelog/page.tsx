@@ -36,6 +36,18 @@ export default function ChangelogPage() {
             <div className="mt-12 space-y-16">
                 <section>
                     <div className="mb-4 flex items-baseline gap-4">
+                        <h2 className="text-3xl font-semibold text-white">v2.0.1</h2>
+                        <span className="text-sm text-zinc-500">May 2026</span>
+                    </div>
+                    <div className="space-y-4">
+                        <ul className="list-disc space-y-2 pl-5 text-zinc-400">
+                            <li><strong>FIX:</strong> Added runtime deprecation warning for <code className="text-zinc-200">v1.x</code> syntax (<code className="text-zinc-200">theme</code>, <code className="text-zinc-200">content</code>) to help users smoothly migrate to the V2 <code className="text-zinc-200">data</code> API without silent failures.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <div className="mb-4 flex items-baseline gap-4">
                         <h2 className="text-3xl font-semibold text-white">v2.0.0</h2>
                         <span className="text-sm text-zinc-500">May 2026</span>
                     </div>
