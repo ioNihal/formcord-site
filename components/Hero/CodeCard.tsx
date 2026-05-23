@@ -5,9 +5,10 @@ export default async function CodeCard() {
     const code = `import { formcord } from "formcord";
 
 await formcord.contact({
-  subject: "New Submission",
-  email: "hello@formcord.dev",
-  message: "Ready to integrate",
+  data: {
+    email: "hello@formcord.dev",
+    message: "Ready to integrate",
+  }
 });`;
 
     const html = await highlight(code);

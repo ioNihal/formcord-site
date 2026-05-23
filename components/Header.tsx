@@ -20,9 +20,9 @@ export default function Header() {
           <Link className="hover:text-white" href="/docs">
             Docs
           </Link>
-          {/* <Link className="hover:text-white" href="#changelog">
+          <Link className="hover:text-white" href="/changelog">
             Changelog
-          </Link> */}
+          </Link>
         </nav>
         <div className="ml-auto md:ml-0 flex items-center gap-3">
           <Link

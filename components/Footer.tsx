@@ -16,9 +16,9 @@ export default function Footer() {
             <Link className="hover:text-white" href="/docs">
               Docs
             </Link>
-            {/* <Link className="hover:text-white" href="#changelog">
+            <Link className="hover:text-white" href="/changelog">
               Changelog
-            </Link> */}
+            </Link>
             <Link
               className="hover:text-white"
               href="https://github.com/ioNihal/formcord"

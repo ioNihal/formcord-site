@@ -1,11 +1,11 @@
 import Image from "next/image";
 
 const codeSamples = [
-    `await formcord.contact({\n  subject: "Contact",\n  email: "hello@x.dev",\n  message: "New inquiry"\n});`,
-    `await formcord.error({\n  error: "payment failed",\n  source: "api/charge"\n});`,
-    `await formcord.deploy({\n  project: "formcord",\n  environment: "prod"\n});`,
-    `await formcord.feedback({\n  rating: 5,\n  message: "Love it"\n});`,
-    `await formcord.bug({\n  title: "Crash",\n  steps: "Click > Save"\n});`,
+    `await formcord.contact({\n  data: {\n    subject: "Contact",\n    email: "hello@x.dev",\n    message: "New inquiry"\n  }\n});`,
+    `await formcord.error({\n  error: "payment failed",\n  data: { source: "api/charge" }\n});`,
+    `await formcord.deploy({\n  data: {\n    project: "formcord",\n    environment: "prod"\n  }\n});`,
+    `await formcord.feedback({\n  data: {\n    rating: 5,\n    message: "Love it"\n  }\n});`,
+    `await formcord.bug({\n  data: {\n    title: "Crash",\n    steps: "Click > Save"\n  }\n});`,
 ];
 
 const DISCORD_EXAMPLES = [

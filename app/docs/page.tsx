@@ -7,6 +7,7 @@ const sections = [
     { id: "discord-setup", label: "Discord setup" },
     { id: "helpers", label: "Helpers" },
     { id: "theming", label: "Theming" },
+    { id: "migration", label: "v1 to v2 Migration" },
     { id: "notes", label: "Notes" },
 ];
 
@@ -82,12 +83,14 @@ FORMCORD_DISCORD_CHANNEL=yyyy`} />
                             </p>
                             <CodeBlock title="TS" code={`import { formcord } from "formcord";
 
-await formcord.contact({
+await formcord.send({
   token: process.env.FORMCORD_DISCORD_TOKEN!,
   channelId: process.env.FORMCORD_DISCORD_CHANNEL!,
-  subject: "Hello",
-  email: "me@example.com",
-  message: "This is a test",
+  data: {
+    "Subject": "Hello",
+    "Email": "me@example.com",
+    "Message": "This is a test",
+  }
 });`} lang="ts" />
                         </div>
                     </section>
@@ -108,7 +111,7 @@ await formcord.contact({
                         <div>
                             <h2 className="text-2xl font-semibold text-white">Helpers</h2>
                             <p className="mt-1 text-sm text-zinc-300">
-                                Five helpers for common notification patterns.
+                                Built-in helpers to standardize your payloads. All custom fields should go inside the <code>data</code> object.
                             </p>
                         </div>
 
@@ -118,21 +121,23 @@ await formcord.contact({
                                 title: "contact",
                                 desc: "Form submissions and inquiries.",
                                 params: [
-                                    ["subject", "Subject of the contact message"],
-                                    ["email", "Sender email address"],
-                                    ["message", "Message body"],
-                                    ["content", "Optional top message"],
-                                    ["theme", "Optional embed theming"],
+                                    ["data.subject", "Subject of the contact message"],
+                                    ["data.email", "Sender email address"],
+                                    ["data.message", "Message body"],
+                                    ["text", "Optional top message text"],
+                                    ["embed", "Optional embed styling"],
                                 ],
                                 code: `formcord.contact({
   token,
   channelId,
-  subject,
-  email,
-  message,
   throwOnError,
-  content,
-  theme,
+  text,
+  embed,
+  data: {
+    subject,
+    email,
+    message,
+  }
 });`,
                             },
                             {
@@ -141,20 +146,22 @@ await formcord.contact({
                                 desc: "Runtime errors with optional context.",
                                 params: [
                                     ["error", "Error object or message"],
-                                    ["source", "Where the error originated"],
-                                    ["environment", "Runtime environment"],
-                                    ["content", "Optional top message"],
-                                    ["theme", "Optional embed theming"],
+                                    ["data.source", "Where the error originated"],
+                                    ["data.environment", "Runtime environment"],
+                                    ["text", "Optional top message text"],
+                                    ["embed", "Optional embed styling"],
                                 ],
                                 code: `formcord.error({
   token,
   channelId,
   error,
-  source,
-  environment,
   throwOnError,
-  content,
-  theme,
+  text,
+  embed,
+  data: {
+    source,
+    environment,
+  }
 });`,
                             },
                             {
@@ -162,23 +169,25 @@ await formcord.contact({
                                 title: "deploy",
                                 desc: "Deployment notifications.",
                                 params: [
-                                    ["project", "Project name"],
-                                    ["environment", "Environment name"],
-                                    ["url", "Deployment URL"],
-                                    ["commit", "Commit SHA or ref"],
-                                    ["content", "Optional top message"],
-                                    ["theme", "Optional embed theming"],
+                                    ["data.project", "Project name"],
+                                    ["data.environment", "Environment name"],
+                                    ["data.url", "Deployment URL"],
+                                    ["data.commit", "Commit SHA or ref"],
+                                    ["text", "Optional top message text"],
+                                    ["embed", "Optional embed styling"],
                                 ],
                                 code: `formcord.deploy({
   token,
   channelId,
-  project,
-  environment,
-  url,
-  commit,
   throwOnError,
-  content,
-  theme,
+  text,
+  embed,
+  data: {
+    project,
+    environment,
+    url,
+    commit,
+  }
 });`,
                             },
                             {
@@ -186,19 +195,21 @@ await formcord.contact({
                                 title: "feedback",
                                 desc: "User feedback and ratings.",
                                 params: [
-                                    ["rating", "Rating value"],
-                                    ["message", "Feedback text"],
-                                    ["content", "Optional top message"],
-                                    ["theme", "Optional embed theming"],
+                                    ["data.rating", "Rating value"],
+                                    ["data.message", "Feedback text"],
+                                    ["text", "Optional top message text"],
+                                    ["embed", "Optional embed styling"],
                                 ],
                                 code: `formcord.feedback({
   token,
   channelId,
-  rating,
-  message,
   throwOnError,
-  content,
-  theme,
+  text,
+  embed,
+  data: {
+    rating,
+    message,
+  }
 });`,
                             },
                             {
@@ -206,21 +217,23 @@ await formcord.contact({
                                 title: "bug",
                                 desc: "Bug reports with steps and context.",
                                 params: [
-                                    ["title", "Bug title"],
-                                    ["steps", "Steps to reproduce"],
-                                    ["browser", "Browser or client info"],
-                                    ["content", "Optional top message"],
-                                    ["theme", "Optional embed theming"],
+                                    ["data.title", "Bug title"],
+                                    ["data.steps", "Steps to reproduce"],
+                                    ["data.browser", "Browser or client info"],
+                                    ["text", "Optional top message text"],
+                                    ["embed", "Optional embed styling"],
                                 ],
                                 code: `formcord.bug({
   token,
   channelId,
-  title,
-  steps,
-  browser,
   throwOnError,
-  content,
-  theme,
+  text,
+  embed,
+  data: {
+    title,
+    steps,
+    browser,
+  }
 });`,
                             },
                         ].map((h) => (
@@ -230,7 +243,7 @@ await formcord.contact({
                                 <ul className="list-disc pl-5 text-sm text-zinc-300">
                                     {h.params.map(([k, v]) => (
                                         <li key={k}>
-                                            <span className="text-white">{k}</span> - {v}
+                                            <span className="text-white">{k}</span> - {v as React.ReactNode}
                                         </li>
                                     ))}
                                 </ul>
@@ -240,26 +253,65 @@ await formcord.contact({
                     </section>
 
                     <section id="theming" className="space-y-4">
-                        <h2 className="text-2xl font-semibold text-white">Theming and content</h2>
+                        <h2 className="text-2xl font-semibold text-white">Theming and custom fields</h2>
                         <p className="text-sm text-zinc-300">
-                            Add a top message with <code>content</code> and customize embeds with{" "}
-                            <code>theme</code>.
+                            Add a top message with <code>text</code>, customize embeds with{" "}
+                            <code>embed</code>, and pass unlimited custom fields in <code>data</code>.
                         </p>
                         <CodeBlock title="TS" code={`formcord.contact({
   token,
   channelId,
-  subject: "Hello",
-  email: "me@example.com",
-  message: "This is a test",
-  content: "New support request",
-  theme: {
+  text: "New support request",
+  embed: {
     title: "RenderCard Support Message",
     author: { name: "Anonymous User - 8f3a2d" },
     color: 0x5865f2,
-    footer: { text: "Email: me@example.com" },
+    footer: { text: "System Notification" },
     timestamp: new Date().toISOString(),
   },
+  data: {
+    subject: "Hello",
+    email: "me@example.com",
+    message: "This is a test",
+    "Extra Field": "Unlimited custom fields allowed"
+  }
 });`} lang="ts" />
+                    </section>
+
+                    <section id="migration" className="space-y-4">
+                        <h2 className="text-2xl font-semibold text-white">⚠️ Migration Guide (v1 to v2)</h2>
+                        <p className="text-sm text-zinc-300">
+                            Version 2.0.0 standardizes field names to prevent confusion between top-level text, embed styling, and form fields.
+                        </p>
+
+                        <div className="grid gap-6 md:grid-cols-2 items-stretch">
+                            <div className="space-y-2 flex flex-col">
+                                <p className="text-xs font-semibold text-red-400">Before (v1.x)</p>
+                                <CodeBlock className="h-full" title="TS" code={`formcord.contact({
+  token,
+  channelId,
+  content: "Top message text",
+  theme: { title: "My Title" },
+  subject: "Hello",
+  email: "me@example.com",
+  message: "Test"
+});`} lang="ts" />
+                            </div>
+                            <div className="space-y-2 flex flex-col">
+                                <p className="text-xs font-semibold text-green-400">After (v2.x)</p>
+                                <CodeBlock className="h-full" title="TS" code={`formcord.contact({
+  token,
+  channelId,
+  text: "Top message text",
+  embed: { title: "My Title" },
+  data: {
+    subject: "Hello",
+    email: "me@example.com",
+    message: "Test"
+  }
+});`} lang="ts" />
+                            </div>
+                        </div>
                     </section>
 
                     <section id="notes" className="space-y-3">
