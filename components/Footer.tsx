@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -6,10 +7,14 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-7xl px-6 py-10 text-xs text-zinc-400">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <Link href={"/"} className="flex items-center gap-3">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#5865F2] text-[10px] font-semibold text-white">
-              F
-            </div>
-            <span>Formcord</span>
+            <Image
+              src="/header-logo-white.svg"
+              alt="formcord"
+              width={140}
+              height={100}
+              className="object-contain w-[120] h-[80] md:w-[140] md:h-[100]"
+              priority
+            />
           </Link>
 
           <div className="flex items-center gap-5">
@@ -38,22 +43,9 @@ export default function Footer() {
 
           <div className="mt-2 text-xs text-gray-200">
             Developed by{" "}
-            <Link
-              href="https://ionihal.vercel.app"
-              target="_blank"
-              rel="noreferrer"
-              className="
-        text-blue-400
-        underline
-        underline-offset-2
-        decoration-blue-400
-        hover:text-blue-300
-        hover:decoration-blue-300
-        focus:outline-none
-        focus-visible:ring-2
-        focus-visible:ring-blue-400
-      "
-            >
+            <Link href="https://ionihal.vercel.app" target="_blank"
+              rel="noreferrer" className="  text-blue-400 underline underline-offset-2  decoration-blue-400
+            hover:text-blue-300  hover:decoration-blue-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 "  >
               Nihal
             </Link>
           </div>

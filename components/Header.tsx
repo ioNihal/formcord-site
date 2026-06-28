@@ -4,14 +4,16 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-black/40 backdrop-blur">
-      <div className="mx-auto flex w-full 2xl:max-w-7xl items-center justify-between gap-4 px-6 py-4 lg:py-6">
-        <Link href={"/"} className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#5865F2] text-sm font-semibold text-white">
-            F
-          </div>
-          <span className=" font-semibold tracking-wide text-white">
-            Formcord
-          </span>
+      <div className="mx-auto flex w-full 2xl:max-w-7xl items-center justify-between gap-4 px-6">
+        <Link href={"/"} className="flex items-center gap-2 shrink-0">
+          <Image
+            src="/header-logo-white.svg"
+            alt="formcord"
+            width={140}
+            height={100}
+            className="object-contain w-[120] h-[80] md:w-[140] md:h-[100]"
+            priority
+          />
         </Link>
         <nav className="ml-auto hidden items-center gap-6 text-zinc-300 md:flex">
           <Link className="hover:text-white" href="/#features">
@@ -39,7 +41,7 @@ export default function Header() {
               height={20}
               className="opacity-80"
             />
-            GitHub
+           <span className="hidden md:block">GitHub</span>
           </Link>
         </div>
       </div>
