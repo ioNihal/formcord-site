@@ -18,7 +18,7 @@ export default async function Stats() {
         {stars.toLocaleString()} stars
       </span>
       <span className="flex items-center gap-1">
-        <ArrowDown size={12} className="text-blue-400" />
+        <ArrowDown size={12} className="text-blurple" />
         {weekly.toLocaleString()}/week
       </span>
       <span className="flex items-center gap-1">

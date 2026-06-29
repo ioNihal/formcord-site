@@ -24,7 +24,7 @@ export default function ThemingSection() {
                     <div className="mt-8 space-y-3 text-zinc-300">
                         {themeTokens.map(([k, v]) => (
                             <div key={k} className="flex items-center gap-4">
-                                <span className=" rounded-md border font-mono border-blue-500/30 bg-blue-500/10 px-2 py-0.5 text-xs text-blue-300">
+                                <span className="rounded-md border font-mono border-blurple/30 bg-blurple/10 px-2 py-0.5 text-xs text-blurple">
                                     {k}
                                 </span>
                                 <span className="text-xs text-zinc-400">{v}</span>

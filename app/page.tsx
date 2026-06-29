@@ -8,19 +8,18 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-space">
 
       <HeroSection />
 
-
       <section className="mx-auto w-full max-w-7xl px-6 py-24">
-        <div className="mx-auto mb-6 flex max-w-xl items-center justify-between text-[10px] sm:text-xs lg:text-sm text-gray-300">
+        <div className="mx-auto mb-6 flex max-w-xl items-center justify-between text-[10px] sm:text-xs lg:text-sm text-gray-300 font-mono">
           <span className="uppercase tracking-widest">Discord Preview</span>
           <span>Real message payload</span>
         </div>
 
         <div className="relative mx-auto w-full max-w-xl">
-          <div className="relative overflow-hidden rounded-4xl ring-3 ring-white/10 bg-black/40 p-2 shadow-[0_30px_90px_rgba(0,0,0,0.6)]">
+          <div className="relative overflow-hidden rounded-4xl ring-3 ring-blurple/20 bg-black/40 p-2 shadow-[0_30px_90px_rgba(0,0,0,0.6)]">
             <Image
               src="/discordMessageExample.webp"
               alt="discord-message-example-image"
@@ -32,16 +31,13 @@ export default function Home() {
         </div>
       </section>
 
-
       <WhyFormcordSection />
-
 
       <HelpersIncludedSection />
 
       <ThemingSection />
 
       <RunsEverywhereSection />
-
 
       <OpenSourceSection />
     </main>

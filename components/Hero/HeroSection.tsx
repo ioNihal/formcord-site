@@ -9,18 +9,18 @@ export default function HeroSection() {
         <section className="relative isolate mx-auto w-full max-w-7xl overflow-hidden px-6 py-18 xl:20 2xl:py-46">
 
 
-            {/* Background blobs */}
+            {/* Background blob using brand blurple */}
             <div
                 aria-hidden="true"
                 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
                 h-55 w-[320px] sm:h-75 sm:w-130 lg:h-90 lg:w-180
-                bg-blue-600/10 rounded-br-full rounded-tl-full blur-3xl -z-10"
+                bg-blurple/10 rounded-br-full rounded-tl-full blur-3xl -z-10"
             />
 
 
             <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
                 <div className="space-y-7">
-                    <p className="inline-flex items-center gap-2 rounded-full bg-blue-600/20 font-mono
+                    <p className="inline-flex items-center gap-2 rounded-full bg-blurple/20 font-mono
                        animate-glow-pulse px-4 py-1.5 text-[10px] sm:text-xs text-zinc-300">
                         v2.0.0 stable
                     </p>
