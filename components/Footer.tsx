@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -7,13 +6,11 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-7xl px-6 py-10 text-xs text-zinc-400">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <Link href={"/"} className="flex items-center gap-3">
-            <Image
-              src="/header-logo-white.svg"
+            <img
+              src="/header-logo-w.svg"
               alt="formcord"
-              width={140}
-              height={100}
-              className="object-contain w-[120] h-[80] md:w-[140] md:h-[100]"
-              priority
+              className="object-contain w-[120] md:w-[140]"
+              loading="lazy"
             />
           </Link>
 

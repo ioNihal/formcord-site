@@ -4,15 +4,13 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-black/40 backdrop-blur">
-      <div className="mx-auto flex w-full 2xl:max-w-7xl items-center justify-between gap-4 px-6">
+      <div className="mx-auto flex w-full 2xl:max-w-7xl items-center justify-between gap-4 px-6 py-4 md:py-6">
         <Link href={"/"} className="flex items-center gap-2 shrink-0">
-          <Image
-            src="/header-logo-white.svg"
+          <img
+            src="/header-logo-w.svg"
             alt="formcord"
-            width={140}
-            height={100}
-            className="object-contain w-[120] h-[80] md:w-[140] md:h-[100]"
-            priority
+            className="object-contain w-[120] md:w-[140]"
+            fetchPriority="high"
           />
         </Link>
         <nav className="ml-auto hidden items-center gap-6 text-zinc-300 md:flex">
