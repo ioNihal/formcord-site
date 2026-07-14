@@ -36,6 +36,21 @@ export default function ChangelogPage() {
             <div className="mt-12 space-y-16">
                 <section>
                     <div className="mb-4 flex items-baseline gap-4">
+                        <h2 className="text-3xl font-semibold text-white">v2.1.0</h2>
+                        <span className="text-sm text-zinc-500">July 2026</span>
+                    </div>
+                    <div className="space-y-4">
+                        <ul className="list-disc space-y-2 pl-5 text-zinc-400">
+                            <li><strong>NEW:</strong> Added native file upload and media attachment support (PDFs, logs, images, and text content) using standard Web APIs.</li>
+                            <li><strong>NEW:</strong> Added a standalone <code className="text-zinc-200">validateFiles</code> helper function to easily run file size/count checks or custom validation rules.</li>
+                            <li><strong>NEW:</strong> Supports human-readable size limits (e.g. <code className="text-zinc-200">"25mb"</code>, <code className="text-zinc-200">"2mb"</code>) in the validation helper.</li>
+                            <li><strong>FIX:</strong> Refined deprecation warnings to avoid false warnings on valid V2 text/attachment sends.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <div className="mb-4 flex items-baseline gap-4">
                         <h2 className="text-3xl font-semibold text-white">v2.0.1</h2>
                         <span className="text-sm text-zinc-500">May 2026</span>
                     </div>

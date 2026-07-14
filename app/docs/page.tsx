@@ -6,6 +6,7 @@ const sections = [
     { id: "get-started", label: "Get started" },
     { id: "discord-setup", label: "Discord setup" },
     { id: "helpers", label: "Helpers" },
+    { id: "media", label: "Media & Attachments" },
     { id: "theming", label: "Theming" },
     { id: "migration", label: "v1 to v2 Migration" },
     { id: "notes", label: "Notes" },
@@ -250,6 +251,53 @@ await formcord.send({
                                 <CodeBlock title="TS" code={h.code} lang="ts" />
                             </div>
                         ))}
+                    </section>
+
+                    <section id="media" className="space-y-4">
+                        <h2 className="text-2xl font-semibold text-white">Media & Attachments</h2>
+                        <p className="text-sm text-zinc-300">
+                            Attach images, PDFs, logs, or text files directly using the optional <code>files</code> array. Formcord handles standard Discord upload constraints automatically (max 25MB combined size, max 10 files).
+                        </p>
+                        <CodeBlock title="TS" code={`import { formcord } from "formcord";
+
+await formcord.send({
+  token,
+  channelId,
+  text: "Attached a report and logs",
+  files: [
+    {
+      name: "report.pdf",
+      data: pdfArrayBuffer, // string | ArrayBuffer | Uint8Array | Blob
+      contentType: "application/pdf"
+    },
+    {
+      name: "server.log",
+      data: "Console outputs...",
+      contentType: "text/plain"
+    }
+  ]
+});`} lang="ts" />
+
+                        <div className="pt-2">
+                            <h3 className="text-lg font-semibold text-white">Custom Validation Helper</h3>
+                            <p className="mt-1 text-sm text-zinc-300">
+                                If you want custom constraints (e.g. limiting files to 2MB, setting a max count of 3, or forcing all-or-nothing check policies), use the standalone <code>validateFiles</code> helper function:
+                            </p>
+                        </div>
+                        <CodeBlock title="TS" code={`import { validateFiles } from "formcord";
+
+const { valid, invalid } = validateFiles(files, {
+  maxFileSize: "2mb",       // Max 2 MB per file
+  maxFileCount: 3,          // Max 3 files total
+  ignoreInvalid: false,     // Reject all files if one fails size checks
+});
+
+if (invalid.length > 0) {
+  console.log("Validation issues:", invalid);
+} else {
+  // Safe to send!
+  await formcord.send({ token, channelId, files: valid });
+}`} lang="ts" />
                     </section>
 
                     <section id="theming" className="space-y-4">

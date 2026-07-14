@@ -22,7 +22,7 @@ export default function HeroSection() {
                 <div className="space-y-7">
                     <p className="inline-flex items-center gap-2 rounded-full bg-blurple/20 font-mono
                        animate-glow-pulse px-4 py-1.5 text-[10px] sm:text-xs text-zinc-300">
-                        v2.0.0 stable
+                        v2.1.0 stable
                     </p>
                     <h1 className="text-2xl lg:text-5xl 2xl:text-6xl font-bold leading-tight text-white md:text-6xl">
                         Ship notifications to Discord with one function.
