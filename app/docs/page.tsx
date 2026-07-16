@@ -256,24 +256,38 @@ await formcord.send({
                     <section id="media" className="space-y-4">
                         <h2 className="text-2xl font-semibold text-white">Media & Attachments</h2>
                         <p className="text-sm text-zinc-300">
-                            Attach images, PDFs, logs, or text files directly using the optional <code>files</code> array. Formcord handles standard Discord upload constraints automatically (max 25MB combined size, max 10 files).
+                            Attach images, PDFs, logs, or text files directly using the optional <code>files</code> array. Formcord handles standard Discord upload constraints automatically (max 25MB combined size, max 10 files) and normalizes standard Web API <code>File</code> / <code>Blob</code> objects dynamically.
                         </p>
                         <CodeBlock title="TS" code={`import { formcord } from "formcord";
+import fs from "node:fs/promises";
 
 await formcord.send({
   token,
   channelId,
-  text: "Attached a report and logs",
+  text: "Attached multiple files of different types",
   files: [
+    // Type 1: Raw Web API File/Blob objects (from client-side inputs or server parsers)
+    rawBrowserFileObject,
+
+    // Type 2: Plain Text Strings (logs, CSVs, markdowns)
     {
-      name: "report.pdf",
-      data: pdfArrayBuffer, // string | ArrayBuffer | Uint8Array | Blob
-      contentType: "application/pdf"
-    },
-    {
-      name: "server.log",
-      data: "Console outputs...",
+      name: "system-logs.txt",
+      data: "INFO: Task started\\nERROR: Failed to save changes.",
       contentType: "text/plain"
+    },
+
+    // Type 3: Node Buffers / Uint8Arrays (local filesystem files)
+    {
+      name: "avatar.png",
+      data: await fs.readFile("./public/avatar.png"),
+      contentType: "image/png"
+    },
+
+    // Type 4: ArrayBuffers (remote asset fetch results)
+    {
+      name: "statement.pdf",
+      data: await fetch("https://api.example.com/invoice.pdf").then(res => res.arrayBuffer()),
+      contentType: "application/pdf"
     }
   ]
 });`} lang="ts" />
@@ -281,22 +295,52 @@ await formcord.send({
                         <div className="pt-2">
                             <h3 className="text-lg font-semibold text-white">Custom Validation Helper</h3>
                             <p className="mt-1 text-sm text-zinc-300">
-                                If you want custom constraints (e.g. limiting files to 2MB, setting a max count of 3, or forcing all-or-nothing check policies), use the standalone <code>validateFiles</code> helper function:
+                                If you want custom constraints (e.g. limiting files to 5MB, setting a max count of 5, or enforcing all-or-nothing check policies), use the standalone <code>validateFiles</code> helper function:
                             </p>
                         </div>
-                        <CodeBlock title="TS" code={`import { validateFiles } from "formcord";
+                        <CodeBlock title="TS" code={`import { formcord, validateFiles } from "formcord";
+import fs from "node:fs/promises";
 
-const { valid, invalid } = validateFiles(files, {
-  maxFileSize: "2mb",       // Max 2 MB per file
-  maxFileCount: 3,          // Max 3 files total
-  ignoreInvalid: false,     // Reject all files if one fails size checks
+// 1. Gather your files (Formcord File/Blob normalization runs automatically)
+const attachments = [
+  rawBrowserFileObject, 
+  {
+    name: "server_logs.txt",
+    data: "DEBUG: Server running...",
+    contentType: "text/plain"
+  },
+  {
+    name: "invoice.pdf",
+    data: await fetch("https://api.example.com/invoice.pdf").then(res => res.arrayBuffer()),
+    contentType: "application/pdf"
+  }
+];
+
+// 2. Validate the mixed list
+const { valid, invalid } = validateFiles(attachments, {
+  maxFileSize: "5mb",     // Max 5 MB per file
+  maxTotalSize: "15mb",   // Max 15 MB combined total
+  maxFileCount: 5,        // Max 5 files total
+  ignoreInvalid: true,    // Keep valid files, skip bad ones (false = reject all on any failure)
+  throwOnError: false,    // Return results gracefully (true = throw immediately)
+  logWarnings: true       // Print warning logs to console
 });
 
+// 3. Handle validation errors
 if (invalid.length > 0) {
-  console.log("Validation issues:", invalid);
-} else {
-  // Safe to send!
-  await formcord.send({ token, channelId, files: valid });
+  console.warn("Some files failed validation checks:", 
+    invalid.map(i => \`\${i.file.name}: \${i.message}\`)
+  );
+}
+
+// 4. Send the verified valid files
+if (valid.length > 0) {
+  await formcord.send({
+    token,
+    channelId,
+    text: "Notification submission with attachments.",
+    files: valid
+  });
 }`} lang="ts" />
                     </section>
 

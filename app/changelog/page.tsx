@@ -36,6 +36,22 @@ export default function ChangelogPage() {
             <div className="mt-12 space-y-16">
                 <section>
                     <div className="mb-4 flex items-baseline gap-4">
+                        <h2 className="text-3xl font-semibold text-white">v2.1.1</h2>
+                        <span className="text-sm text-zinc-500">July 2026</span>
+                    </div>
+                    <div className="space-y-4">
+                        <ul className="list-disc space-y-2 pl-5 text-zinc-400">
+                            <li><strong>NEW:</strong> Added automatic normalization for standard browser/runtime <code className="text-zinc-200">File</code> and <code className="text-zinc-200">Blob</code> objects directly inside <code className="text-zinc-200">validateFiles</code> (no upfront manual mapping required).</li>
+                            <li><strong>NEW:</strong> Added <code className="text-zinc-200">"batch_rejected"</code> to validation error reasons when using all-or-nothing validation (<code className="text-zinc-200">ignoreInvalid: false</code>).</li>
+                            <li><strong>NEW:</strong> Added strict type checking for unrecognized file formats (triggers <code className="text-zinc-200">"invalid_file_type"</code> reason).</li>
+                            <li><strong>FIX:</strong> Filtered out null/undefined elements from file arrays to prevent TypeError crashes.</li>
+                            <li><strong>FIX:</strong> Optimized batch validation performance by using <code className="text-zinc-200">push</code> instead of <code className="text-zinc-200">unshift</code>.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <div className="mb-4 flex items-baseline gap-4">
                         <h2 className="text-3xl font-semibold text-white">v2.1.0</h2>
                         <span className="text-sm text-zinc-500">July 2026</span>
                     </div>
