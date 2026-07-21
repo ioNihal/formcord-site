@@ -36,14 +36,28 @@ export default function ChangelogPage() {
             <div className="mt-12 space-y-16">
                 <section>
                     <div className="mb-4 flex items-baseline gap-4">
+                        <h2 className="text-3xl font-semibold text-white">v2.2.0</h2>
+                        <span className="text-sm text-zinc-500">July 2026</span>
+                    </div>
+                    <div className="space-y-4">
+                        <ul className="list-disc space-y-2 pl-5 text-zinc-400">
+                            <li><strong>NEW:</strong> Notification methods now return a <code className="text-zinc-200">success</code> status so applications can handle an unsuccessful Discord delivery without enabling exceptions.</li>
+                            <li><strong>NEW:</strong> File validation messages now use readable byte, KB, MB, and GB units.</li>
+                            <li><strong>DOCS:</strong> Added delivery-status guidance and <code className="text-zinc-200">throwOnError</code> debugging instructions.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <div className="mb-4 flex items-baseline gap-4">
                         <h2 className="text-3xl font-semibold text-white">v2.1.1</h2>
                         <span className="text-sm text-zinc-500">July 2026</span>
                     </div>
                     <div className="space-y-4">
                         <ul className="list-disc space-y-2 pl-5 text-zinc-400">
                             <li><strong>NEW:</strong> Added automatic normalization for standard browser/runtime <code className="text-zinc-200">File</code> and <code className="text-zinc-200">Blob</code> objects directly inside <code className="text-zinc-200">validateFiles</code> (no upfront manual mapping required).</li>
-                            <li><strong>NEW:</strong> Added <code className="text-zinc-200">"batch_rejected"</code> to validation error reasons when using all-or-nothing validation (<code className="text-zinc-200">ignoreInvalid: false</code>).</li>
-                            <li><strong>NEW:</strong> Added strict type checking for unrecognized file formats (triggers <code className="text-zinc-200">"invalid_file_type"</code> reason).</li>
+                            <li><strong>NEW:</strong> Added <code className="text-zinc-200">&quot;batch_rejected&quot;</code> to validation error reasons when using all-or-nothing validation (<code className="text-zinc-200">ignoreInvalid: false</code>).</li>
+                            <li><strong>NEW:</strong> Added strict type checking for unrecognized file formats (triggers <code className="text-zinc-200">&quot;invalid_file_type&quot;</code> reason).</li>
                             <li><strong>FIX:</strong> Filtered out null/undefined elements from file arrays to prevent TypeError crashes.</li>
                             <li><strong>FIX:</strong> Optimized batch validation performance by using <code className="text-zinc-200">push</code> instead of <code className="text-zinc-200">unshift</code>.</li>
                         </ul>
@@ -59,7 +73,7 @@ export default function ChangelogPage() {
                         <ul className="list-disc space-y-2 pl-5 text-zinc-400">
                             <li><strong>NEW:</strong> Added native file upload and media attachment support (PDFs, logs, images, and text content) using standard Web APIs.</li>
                             <li><strong>NEW:</strong> Added a standalone <code className="text-zinc-200">validateFiles</code> helper function to easily run file size/count checks or custom validation rules.</li>
-                            <li><strong>NEW:</strong> Supports human-readable size limits (e.g. <code className="text-zinc-200">"25mb"</code>, <code className="text-zinc-200">"2mb"</code>) in the validation helper.</li>
+                            <li><strong>NEW:</strong> Supports human-readable size limits (e.g. <code className="text-zinc-200">&quot;25mb&quot;</code>, <code className="text-zinc-200">&quot;2mb&quot;</code>) in the validation helper.</li>
                             <li><strong>FIX:</strong> Refined deprecation warnings to avoid false warnings on valid V2 text/attachment sends.</li>
                         </ul>
                     </div>
@@ -91,7 +105,7 @@ export default function ChangelogPage() {
                             <li><code className="text-zinc-200">theme</code> is now <code className="text-zinc-200">embed</code>.</li>
                             <li>All arbitrary parameters like <code className="text-zinc-200">subject</code>, <code className="text-zinc-200">email</code>, and <code className="text-zinc-200">message</code> must be placed inside the <code className="text-zinc-200">data</code> object.</li>
                             <li><strong>NEW:</strong> Introduced a unified <code className="text-zinc-200">formcord.send()</code> method for fully custom notifications.</li>
-                            <li><strong>NEW:</strong> The <code className="text-zinc-200">data</code> property automatically transforms arbitrary key-value pairs into beautifully formatted Discord embed fields (up to Discord's 25 field limit).</li>
+                            <li><strong>NEW:</strong> The <code className="text-zinc-200">data</code> property automatically transforms arbitrary key-value pairs into beautifully formatted Discord embed fields (up to Discord&apos;s 25 field limit).</li>
                         </ul>
                     </div>
                 </section>

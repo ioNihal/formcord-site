@@ -2,9 +2,12 @@ import ButtonwithCopy from "./ButtonwithCopy";
 import Stats from "./Stats";
 import CodeCard from "./CodeCard";
 import ButtonWithScroll from "./ButtonWithScroll";
+import { Suspense } from "react";
+import PackageVersion from "./PackageVersion";
 
 
 export default function HeroSection() {
+
     return (
         <section className="relative isolate mx-auto w-full max-w-7xl overflow-hidden px-6 py-18 xl:20 2xl:py-46">
 
@@ -20,10 +23,12 @@ export default function HeroSection() {
 
             <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
                 <div className="space-y-7">
-                    <p className="inline-flex items-center gap-2 rounded-full bg-blurple/20 font-mono
+                    <Suspense fallback={<p className="inline-flex items-center gap-2 rounded-full bg-blurple/20 font-mono
                        animate-glow-pulse px-4 py-1.5 text-[10px] sm:text-xs text-zinc-300">
-                        v2.1.1 stable
-                    </p>
+                        checking...
+                    </p>}>
+                        <PackageVersion />
+                    </Suspense>
                     <h1 className="text-2xl lg:text-5xl 2xl:text-6xl font-bold leading-tight text-white md:text-6xl">
                         Ship notifications to Discord with one function.
                     </h1>
@@ -38,7 +43,7 @@ export default function HeroSection() {
                     <Stats />
                 </div>
                 <CodeCard />
-            </div>
-        </section>
+            </div >
+        </section >
     )
 }

@@ -6,6 +6,7 @@ const sections = [
     { id: "get-started", label: "Get started" },
     { id: "discord-setup", label: "Discord setup" },
     { id: "helpers", label: "Helpers" },
+    { id: "delivery-status", label: "Delivery status" },
     { id: "media", label: "Media & Attachments" },
     { id: "theming", label: "Theming" },
     { id: "migration", label: "v1 to v2 Migration" },
@@ -251,6 +252,25 @@ await formcord.send({
                                 <CodeBlock title="TS" code={h.code} lang="ts" />
                             </div>
                         ))}
+                    </section>
+
+                    <section id="delivery-status" className="space-y-4">
+                        <h2 className="text-2xl font-semibold text-white">Delivery status and debugging</h2>
+                        <p className="text-sm text-zinc-300">
+                            Formcord is fire-and-forget by default. Every notification method resolves with a simple <code>success</code> status when Discord accepts or rejects the request.
+                        </p>
+                        <CodeBlock title="TS" code={`const result = await formcord.contact({
+  token,
+  channelId,
+  data: { subject, email, message }
+});
+
+if (!result.success) {
+  // Show a fallback, retry, or record the failed notification.
+}`} lang="ts" />
+                        <p className="text-sm text-zinc-300">
+                            Set <code>throwOnError: true</code> when you need Discord&apos;s original response for debugging.
+                        </p>
                     </section>
 
                     <section id="media" className="space-y-4">
